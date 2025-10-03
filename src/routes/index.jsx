@@ -2,26 +2,18 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home";
 import Cart from "../pages/cart";
 import Like from "../pages/like";
+import Login from "../pages/login/LoginPage"; 
 import MainLayout from "../components/main-layout";
-import Footer from "../components/footer";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "/like",
-        element: <Like />,
-      },
+      { index: true, element: <Home /> },
+      { path: "/cart", element: <Cart /> },
+      { path: "/like", element: <Like /> },
+      { path: "/login", element: <Login /> },
     ],
   },
 ]);

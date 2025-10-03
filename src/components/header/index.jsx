@@ -12,12 +12,11 @@ import { IoBagRemoveSharp } from "react-icons/io5";
 import { FaChevronRight } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
-import { RiLoginBoxFill } from "react-icons/ri";
-
-
+import { GiEarthAmerica } from "react-icons/gi";
 
 const Header = () => {
   const { data } = useSelector((state) => state.cartSlice);
+  const { like } = useSelector((state) => state.likeSlice);
   return (
     <header className="w-full shadow-sm ">
       <div className="bg-gray-100 text-sm py-2 px-4 hidden md:flex justify-between items-center sticky top-0 z-50">
@@ -66,19 +65,26 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link to={"/"}><FaHome  className="text-[25px]" /></Link>
-          <RiLoginBoxFill  className="text-[25px]" />
+          <Link to={"/"}>
+            <FaHome className="text-[25px]" />
+          </Link>
+          <GiEarthAmerica className="text-[25px]" />
         </div>
         <div className="flex items-center gap-4">
-          <Link to={"/like"}>
-            <FaRegHeart className="text-[25px]" />
-          </Link>
+          <Badge count={like.length}>
+            <Link to={"/like"}>
+              <FaRegHeart className="text-[25px]" />
+            </Link>
+          </Badge>
           <Badge count={data.length}>
             <Link to={"/cart"}>
               <LuShoppingBag className="text-[25px]" />
             </Link>
           </Badge>
-          <button className=" w-20 h-8 bg-blue-400 rounded-[5px] ">
+          <button
+            onClick={() => navigate("/login")}
+            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+          >
             Войти
           </button>
         </div>

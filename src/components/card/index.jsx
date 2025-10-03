@@ -4,7 +4,7 @@ import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../redux/cart-slice";
 import toast from "react-hot-toast";
-import { getDataLike } from "../../redux/like-slice";
+import { deleteLike, getDataLike } from "../../redux/like-slice";
 
 const Card = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Card = (props) => {
         {isLiked ? (
           <FaHeart
             onClick={() => {
-              dispatch(getDataLike(props));
+              dispatch(deleteLike(id));
               toast.success("Saralanganlardan o'chirildi");
             }}
             className="absolute top-2 right-2 cursor-pointer text-red-500"
